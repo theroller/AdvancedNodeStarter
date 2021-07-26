@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import map from 'lodash/map';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchBlogs } from '../../actions';

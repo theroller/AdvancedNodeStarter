@@ -1,0 +1,17 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.organizeImports": true,
+    },
+    "editor.formatOnSave": true,
+    "eslint.format.enable": true,
+    "eslint.validate": [
+        "javascript"
+    ],
+    "eslint.workingDirectories": [
+        "./src",
+    ],
+    "[javascript]": {
+        "editor.tabSize": 2
+    }
+}

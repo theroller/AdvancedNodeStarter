@@ -1,0 +1,32 @@
+{
+    "name": "${containerWorkspaceFolderBasename}",
+    "remoteEnv": {
+        "PATH": "${containerEnv:PATH}:./node_modules/.bin",
+    },
+    "containerUser": "vscode",
+    "remoteUser": "vscode",
+    "overrideCommand": false,
+    "dockerFile": "Dockerfile",
+    "extensions": [
+        "dbaeumer.vscode-eslint",
+        "hediet.vscode-drawio",
+        "mechatroner.rainbow-csv",
+        "mhutchie.git-graph",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "tyriar.windows-terminal",
+    ],
+    "mounts": [
+        "source=vsc-${containerWorkspaceFolderBasename},target=/root/.vscode-server/extensions,type=volume",
+        "source=${localEnv:HOME}/.config,target=/home/vscode/.config,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.npmrc,target=/home/vscode/.npmrc,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.password-store,target=/home/vscode/.password-store,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
+        "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+    ],
+    "runArgs": [
+        "--init"
+    ],
+    "initializeCommand": "bash -i .devcontainer/devcontainer-init.sh",
+}
