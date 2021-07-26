@@ -32,7 +32,8 @@ module.exports = (app) => {
       await blog.save();
       res.send(blog);
     } catch (err) {
-      res.send(400, err);
+      console.log(err);
+      res.status(400).send(err);
     }
   });
 };
