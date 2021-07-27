@@ -79,3 +79,5 @@ RUN ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
 ## user-dependent configurations
 # ==============================================================================
 USER ${USER}
+
+RUN sudo apt install -y redis-server
