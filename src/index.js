@@ -5,10 +5,12 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
+const path = require('path');
 const keys = require('./config/keys');
 
 require('./models/User');
 require('./models/Blog');
+require('./services/cache');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
@@ -32,7 +34,6 @@ require('./routes/blogRoutes')(app);
 if (['production'].includes(process.env.NODE_ENV)) {
   app.use(express.static('client/build'));
 
-  const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(path.resolve('client', 'build', 'index.html'));
   });
